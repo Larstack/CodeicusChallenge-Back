@@ -57,6 +57,13 @@ public class Tarea implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaUpdate;
 
+	@Column(name="deleted")
+	private Boolean deleted;
+	
+	@Column(name="fecha_delete")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechaDelete;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -120,5 +127,21 @@ public class Tarea implements Serializable {
 	public void setFechaUpdate(Date fechaUpdate) {
 		this.fechaUpdate = fechaUpdate;
 	}
-	
+
+	public Boolean getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	public Date getFechaDelete() {
+		return fechaDelete;
+	}
+
+	public void setFechaDelete(Date fechaDelete) {
+		this.fechaDelete = fechaDelete;
+	}
+
 }
