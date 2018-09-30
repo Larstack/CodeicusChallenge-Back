@@ -16,3 +16,9 @@ create table maestro.tarea(
 	fecha_delete timestamp null,
 	deleted boolean not null default false
 );
+
+select * from maestro.tarea;
+
+insert into maestro.tarea(titulo,descripcion,es_urgente,fecha_estimada_finalizacion) values
+('Este es el titulo 1','Esta es la descripcion de 1', true, '2018-10-13'::date),
+('Este es el titulo 2','Esta es la descripcion de 2', false, '2018-11-14'::date);

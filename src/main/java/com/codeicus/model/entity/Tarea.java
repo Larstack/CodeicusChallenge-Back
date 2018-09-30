@@ -42,7 +42,7 @@ public class Tarea implements Serializable {
 	private Boolean esUrgente;
 	
 	@Column(name="fecha_alta")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date fechaAlta;
 	
 	@Column(name="fecha_estimada_finalizacion")
@@ -50,11 +50,11 @@ public class Tarea implements Serializable {
 	private Date fechaEstimadaFinalizacion;
 	
 	@Column(name="fecha_finalizacion")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date fechaFinalizacion;
 	
 	@Column(name="fecha_update")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date fechaUpdate;
 
 	@Column(name="deleted")
@@ -99,7 +99,7 @@ public class Tarea implements Serializable {
 	public Date getFechaAlta() {
 		return fechaAlta;
 	}
-
+	
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}

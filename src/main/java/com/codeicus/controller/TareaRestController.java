@@ -20,7 +20,7 @@ import com.codeicus.service.interfaces.TareaService;
 
 @RestController
 @CrossOrigin(origins= {"http://localhost:8080"})
-@RequestMapping("/service")
+@RequestMapping("/api")
 public class TareaRestController {
 
 	@Autowired
@@ -34,7 +34,7 @@ public class TareaRestController {
 	}
 	
 	@PutMapping("/tarea")
-	@ResponseStatus(HttpStatus.CREATED)
+	@ResponseStatus(HttpStatus.OK)
 	public void update(@RequestBody Tarea tarea) {
 		
 		this.service.save(tarea);

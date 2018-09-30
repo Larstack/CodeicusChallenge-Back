@@ -1,5 +1,6 @@
 package com.codeicus.model.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -19,8 +20,13 @@ public class TareaDaoImpl implements TareaDao {
 	@Override
 	public void save(Tarea tarea) {
 
-		if(tarea.getId() != null) this.em.merge(tarea);
+		if(tarea.getId() != null) {
+			
+			tarea.setFechaUpdate(new Date());
+			this.em.merge(tarea);
+		}
 		else this.em.persist(tarea);
+		if(tarea.getId() == null) System.out.println("nulo");;
 	}
 
 	@Override
@@ -32,7 +38,9 @@ public class TareaDaoImpl implements TareaDao {
 	@Override
 	public List<Tarea> findAll() {
 
-		return this.em.createNamedQuery(Tarea.FIND_ALL, Tarea.class).getResultList();
+		List list = this.em.createNamedQuery(Tarea.FIND_ALL, Tarea.class).getResultList();
+		
+		return list;
 	}
 
 	@Override
