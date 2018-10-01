@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,7 +18,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(schema="maestro", name="tarea")
 @NamedQueries({
-	@NamedQuery(name=Tarea.FIND_ALL, query="from Tarea t"),
+	@NamedQuery(name=Tarea.FIND_ALL, query="from Tarea t where deleted = false"),
 	@NamedQuery(name=Tarea.FIND_BY_ID, query="from Tarea t where id = :" + Tarea.PARAM_ID)
 })
 public class Tarea implements Serializable {
@@ -63,6 +64,15 @@ public class Tarea implements Serializable {
 	@Column(name="fecha_delete")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaDelete;
+	
+	@PrePersist
+	void prePersist() {
+	   
+		if (this.fechaAlta == null) this.fechaAlta = new Date();
+		if (this.deleted == null) this.deleted = false;
+		if (this.esUrgente == null) this.esUrgente = false;
+	   
+	}
 	
 	public Integer getId() {
 		return id;

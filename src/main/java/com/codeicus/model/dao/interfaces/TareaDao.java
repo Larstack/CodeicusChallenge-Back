@@ -7,8 +7,8 @@ import com.codeicus.model.entity.Tarea;
 public interface TareaDao {
 
 	void save(Tarea tarea);
-	void delete(Long id);
+	void delete(Tarea tarea);
 	List<Tarea> findAll();
-	Tarea findById(Long id);
+	Tarea findById(Integer id);
 
 }

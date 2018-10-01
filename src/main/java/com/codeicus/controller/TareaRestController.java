@@ -40,11 +40,11 @@ public class TareaRestController {
 		this.service.save(tarea);
 	}
 	
-	@DeleteMapping("/tarea/{id}")
+	@DeleteMapping("/tarea")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
+	public void delete(@RequestBody Tarea tarea) {
 		
-		this.service.delete(id);
+		this.service.delete(tarea);
 	}
 
 	@GetMapping("/tarea")
@@ -54,7 +54,7 @@ public class TareaRestController {
 	}
 
 	@GetMapping("/tarea/{id}")
-	public Tarea findById(@PathVariable Long id) {
+	public Tarea findById(@PathVariable Integer id) {
 		
 		return this.service.findById(id);
 	}

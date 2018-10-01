@@ -25,9 +25,9 @@ public class TareaServiceImpl implements TareaService {
 
 	@Override
 	@Transactional
-	public void delete(Long id) {
+	public void delete(Tarea tarea) {
 		
-		tareaDao.delete(id);
+		tareaDao.delete(tarea);
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class TareaServiceImpl implements TareaService {
 
 	@Override
 	@Transactional(readOnly=true)
-	public Tarea findById(Long id) {
+	public Tarea findById(Integer id) {
 
 		return tareaDao.findById(id);
 	}

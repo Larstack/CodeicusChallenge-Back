@@ -30,9 +30,15 @@ public class TareaDaoImpl implements TareaDao {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void delete(Tarea tarea) {
 
-		this.em.remove(this.findById(id));
+//		BAJA LOGICA
+		
+		tarea.setFechaUpdate(new Date());
+		tarea.setFechaDelete(new Date());
+		tarea.setDeleted(true);
+		
+		this.em.merge(tarea);
 	}
 
 	@Override
@@ -44,7 +50,7 @@ public class TareaDaoImpl implements TareaDao {
 	}
 
 	@Override
-	public Tarea findById(Long id) {
+	public Tarea findById(Integer id) {
 
 		return this.em.createNamedQuery(Tarea.FIND_BY_ID, Tarea.class)
 				.setParameter(Tarea.PARAM_ID, id)
